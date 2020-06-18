@@ -2,7 +2,6 @@ package ir.ac.kntu.View;
 
 import ir.ac.kntu.Controller.Controller;
 import ir.ac.kntu.Model.Game.Game;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +14,7 @@ import javafx.stage.Stage;
 
 public class StartGame extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
         Pane root = new Pane();
         Scene scene = new Scene(root,600,600);
         Controller controller = new Controller();

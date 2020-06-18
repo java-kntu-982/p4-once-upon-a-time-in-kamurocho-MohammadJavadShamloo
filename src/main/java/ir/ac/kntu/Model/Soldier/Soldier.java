@@ -7,16 +7,16 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class Soldier implements Update{
-    protected String name;
-    protected double health;
-    protected double attack;
-    protected double attackRange;
-    protected double fieldOfView;
-    protected Spot spot;
-    protected double velocity;
-    protected Shape shape;
-    protected int level;
-    protected LinkedList<Spot> path;
+    private String name;
+    private double health;
+    private double attack;
+    private double attackRange;
+    private double fieldOfView;
+    private Spot spot;
+    private double velocity;
+    private Shape shape;
+    private int level;
+    private LinkedList<Spot> path;
 
     public Soldier(String name, double health, double attack, double attackRange, double fieldOfView) {
         this.name = name;
@@ -112,8 +112,12 @@ public class Soldier implements Update{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Soldier)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Soldier)) {
+            return false;
+        }
         Soldier soldier = (Soldier) o;
         return Double.compare(soldier.getHealth(), getHealth()) == 0 &&
                 Double.compare(soldier.getAttack(), getAttack()) == 0 &&
@@ -131,8 +135,7 @@ public class Soldier implements Update{
     }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         return  "Name = " + name +
                 "|| Health = " + health +
                 "|| Attack = " + attack +

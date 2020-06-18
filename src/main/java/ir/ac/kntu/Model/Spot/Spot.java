@@ -3,11 +3,11 @@ package ir.ac.kntu.Model.Spot;
 import java.util.Objects;
 
 public class Spot implements Comparable<Spot>{
-    protected double x;
-    protected double y;
-    protected double hValue;
-    protected double gValue;
-    protected double aStarFunctionValue;
+    private double x;
+    private double y;
+    private double hValue;
+    private double gValue;
+    private double aStarFunctionValue;
 
     public Spot(double x, double y) {
         this.x = x;
@@ -56,8 +56,12 @@ public class Spot implements Comparable<Spot>{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Spot)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Spot)) {
+            return false;
+        }
         Spot spot = (Spot) o;
         return Double.compare(spot.getX(), getX()) == 0 &&
                 Double.compare(spot.getY(), getY()) == 0;

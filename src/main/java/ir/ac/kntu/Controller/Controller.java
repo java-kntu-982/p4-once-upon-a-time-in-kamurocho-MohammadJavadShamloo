@@ -11,16 +11,14 @@ import ir.ac.kntu.Model.Soldier.TeamMate.*;
 import java.util.*;
 
 public class Controller {
-    protected ArrayList<Soldier> teamMates = new ArrayList<>();
-    protected ArrayList<Soldier> inWarTeamMates = new ArrayList<>();
-    protected ArrayList<Soldier> enemies = new ArrayList<>();
-    protected ArrayList<Soldier> inWarEnemies = new ArrayList<>();
-    protected ArrayList<Material> materials = new ArrayList<>();
-    protected ArrayList<Material> inWarMaterials = new ArrayList<>();
-    protected int money = 100;
-    protected boolean[][] booleans = new boolean[600][600];
-    protected int width = 600;
-    protected int height = 600;
+    private ArrayList<Soldier> teamMates = new ArrayList<>();
+    private ArrayList<Soldier> inWarTeamMates = new ArrayList<>();
+    private ArrayList<Soldier> enemies = new ArrayList<>();
+    private ArrayList<Soldier> inWarEnemies = new ArrayList<>();
+    private ArrayList<Material> materials = new ArrayList<>();
+    private ArrayList<Material> inWarMaterials = new ArrayList<>();
+    private int money = 100;
+    private boolean[][] booleans = new boolean[600][600];
 
     public boolean[][] getBooleans() {
         return booleans;
@@ -130,18 +128,16 @@ public class Controller {
                         booleans[i][j] = false;
                     }  else if(j>=360 && j<=420){
                         booleans[i][j] = false;
-                    }  else if(j>=480 && j<=540){
-                        booleans[i][j] = false;
-                    } else {
-                        booleans[i][j] = true;
+                    }  else {
+                        booleans[i][j] = j < 480 || j > 540;
                     }
                 }
             }
         }
     }
 
-    public void organization(ArrayList<Soldier> GivedinWarTeamMates){
-        setInWarTeamMates(GivedinWarTeamMates);
+    public void organization(ArrayList<Soldier> givedinWarTeamMates){
+        setInWarTeamMates(givedinWarTeamMates);
     }
 
     public void initializeSoldiers(){

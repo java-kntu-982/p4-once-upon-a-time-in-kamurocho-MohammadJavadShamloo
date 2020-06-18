@@ -1,17 +1,16 @@
 package ir.ac.kntu.Model.Material;
 
 import ir.ac.kntu.Model.Spot.Spot;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 import java.util.Objects;
 
 public class Material implements MaterialSupplies {
-    protected String name;
-    protected double health;
-    protected int level;
-    protected Spot spot;
-    protected Shape shape;
+    private String name;
+    private double health;
+    private int level;
+    private Spot spot;
+    private Shape shape;
 
     public Material(String name, double health) {
         this.name = name;
@@ -63,8 +62,12 @@ public class Material implements MaterialSupplies {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Material)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Material)) {
+            return false;
+        }
         Material material = (Material) o;
         return Double.compare(material.getHealth(), getHealth()) == 0 &&
                 getLevel() == material.getLevel() &&

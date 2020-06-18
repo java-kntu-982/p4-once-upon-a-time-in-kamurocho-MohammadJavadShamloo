@@ -6,10 +6,10 @@ import ir.ac.kntu.Model.Soldier.Soldier;
 import java.util.*;
 
 public class Game implements GameSupplies {
-    protected ArrayList<Soldier> teamMate = new ArrayList<>();
-    protected Stack<ArrayList<Soldier>> enemyStack = new Stack<>();
-    protected ArrayList<Material> materials = new ArrayList<>();
-    protected ArrayList<Soldier> currentEnemiesInWar = new ArrayList<>();
+    private ArrayList<Soldier> teamMate = new ArrayList<>();
+    private Stack<ArrayList<Soldier>> enemyStack = new Stack<>();
+    private ArrayList<Material> materials = new ArrayList<>();
+    private ArrayList<Soldier> currentEnemiesInWar = new ArrayList<>();
 
     public Game(ArrayList<Soldier> teamMate, Stack<ArrayList<Soldier>> enemyStack) {
         this.teamMate = teamMate;
@@ -52,8 +52,12 @@ public class Game implements GameSupplies {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Game)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Game)) {
+            return false;
+        }
         Game game = (Game) o;
         return Objects.equals(getTeamMate(), game.getTeamMate()) &&
                 Objects.equals(getEnemyStack(), game.getEnemyStack());
