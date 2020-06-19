@@ -1,45 +1,45 @@
 package ir.ac.kntu.Model.Game;
 
-import ir.ac.kntu.Model.Material.Material;
-import ir.ac.kntu.Model.Soldier.Soldier;
+import ir.ac.kntu.Model.Material;
+import ir.ac.kntu.Model.Soldier;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Stack;
 
-public class Game implements GameSupplies {
-    private ArrayList<Soldier> teamMate = new ArrayList<>();
-    private Stack<ArrayList<Soldier>> enemyStack = new Stack<>();
-    private ArrayList<Material> materials = new ArrayList<>();
-    private ArrayList<Soldier> currentEnemiesInWar = new ArrayList<>();
+public class Game implements GameSupplies{
+    private Stack<ArrayList<Soldier>> enemies;
+    private ArrayList<Soldier> TeamMates;
+    private ArrayList<Material> materials;
+    private ArrayList<Soldier> currentEnemies;
 
-    public Game(ArrayList<Soldier> teamMate, Stack<ArrayList<Soldier>> enemyStack) {
-        this.teamMate = teamMate;
-        this.enemyStack = enemyStack;
+    public Game(Stack<ArrayList<Soldier>> enemies, ArrayList<Soldier> teamMates, ArrayList<Material> materials) {
+        this.enemies = enemies;
+        TeamMates = teamMates;
+        this.materials = materials;
     }
 
-    public Game(){}
-
-    public ArrayList<Soldier> getTeamMate() {
-        return teamMate;
+    public ArrayList<Soldier> getCurrentEnemies() {
+        return currentEnemies;
     }
 
-    public void setTeamMate(ArrayList<Soldier> teamMate) {
-        this.teamMate = teamMate;
+    public void setCurrentEnemies(ArrayList<Soldier> currentEnemies) {
+        this.currentEnemies = currentEnemies;
     }
 
-    public Stack<ArrayList<Soldier>> getEnemyStack() {
-        return enemyStack;
+    public Stack<ArrayList<Soldier>> getEnemies() {
+        return enemies;
     }
 
-    public void setEnemyStack(Stack<ArrayList<Soldier>> enemyStack) {
-        this.enemyStack = enemyStack;
+    public void setEnemies(Stack<ArrayList<Soldier>> enemies) {
+        this.enemies = enemies;
     }
 
-    public ArrayList<Soldier> getCurrentEnemiesInWar() {
-        return currentEnemiesInWar;
+    public ArrayList<Soldier> getTeamMates() {
+        return TeamMates;
     }
 
-    public void setCurrentEnemiesInWar(ArrayList<Soldier> currentEnemiesInWar) {
-        this.currentEnemiesInWar = currentEnemiesInWar;
+    public void setTeamMates(ArrayList<Soldier> teamMates) {
+        TeamMates = teamMates;
     }
 
     public ArrayList<Material> getMaterials() {
@@ -51,27 +51,19 @@ public class Game implements GameSupplies {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Game)) {
-            return false;
-        }
-        Game game = (Game) o;
-        return Objects.equals(getTeamMate(), game.getTeamMate()) &&
-                Objects.equals(getEnemyStack(), game.getEnemyStack());
+    public void Update() {
+
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getTeamMate(), getEnemyStack());
+    public boolean isFinished() {
+        return false;
     }
 
     @Override
     public boolean nextWave() {
-        if(currentEnemiesInWar.size() == 0 && teamMate.size() != 0){
-            setCurrentEnemiesInWar(enemyStack.pop());
+        if(currentEnemies.size() == 0){
+            setCurrentEnemies(enemies.pop());
             return true;
         } else {
             return false;
@@ -79,8 +71,7 @@ public class Game implements GameSupplies {
     }
 
     @Override
-    public boolean isWin() {
-        return currentEnemiesInWar.size() == 0 && enemyStack.size() == 0
-                && materials.size() == 0 && teamMate.size() != 0;
+    public String whoWin() {
+        return null;
     }
 }
